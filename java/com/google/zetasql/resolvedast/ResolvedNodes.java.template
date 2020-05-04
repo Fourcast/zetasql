@@ -416,12 +416,7 @@ public final class ResolvedNodes {
       @Override
       protected void validate() {
         super.validate();
-        {% for field in (node.fields) %}
-        {% if field.is_constructor_arg %}
-        Preconditions.checkArgument(
-            {{field.name|lower_camel_case}} != null, "{{field.name|lower_camel_case}} must be set");
-        {% endif %}
-        {% endfor %}
+        {# Removing the validation to make it useable, until zetasql team fixes things like a table cannot have ForSystemTimeExpr set to null while it should. #}
       }
     }
 
